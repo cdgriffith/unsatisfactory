@@ -12,6 +12,17 @@ pip install -r requirements
 python.exe unsatisfactory.py
 ```
 
+## Build
+
+Make yourself an exe
+
+```
+pip install pyinstaller
+pyinstaller unsatisfactory.py --name unsatisfactory --clean --onefile
+
+# placed in dist\unsatisfactory.exe
+```
+
 # License
 
 MIT License - Copyright (c) 2020 Chris Griffith - See LICENSE

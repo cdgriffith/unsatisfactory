@@ -1,0 +1,47 @@
+version: VER-{build}
+
+skip_commits:
+  files:
+    - data/*
+    - README.md
+    - AUTHORS
+    - CHANGES
+    - LICENSE
+    - .gitignore
+    - .pip8speaks.yml
+    - .pre-commit-config.yaml
+    - pyproject.toml
+  message: /\[skip ci\]/
+
+
+image:
+  - Visual Studio 2019
+
+platform: x64
+
+branches:
+  only:
+    - master
+    - build
+    - develop
+
+install:
+  - cmd: C:\Python38-x64\python -m pip install -r requirements.txt
+
+build_script:
+  - cmd: C:\Python38-x64\Scripts\pyinstaller unsatisfactory.py --name unsatisfactory --clean --onefile
+  - cmd: move dist\*.exe .
+
+test: off
+
+artifacts:
+  - path: 'unsatisfactory*exe'
+
+deploy:
+  - provider: Environment
+    name: release
+    artifact: 'unsatisfactory*exe'
+    description: ''
+    on:
+      branch:
+        - master
