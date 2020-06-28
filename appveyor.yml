@@ -27,7 +27,7 @@ branches:
 
 install:
   - cmd: C:\Python38-x64\python -m pip install -r requirements.txt
-  - cmd: C:\Python38-x64\python -m pip install pyinstaller
+  - cmd: C:\Python38-x64\python -m pip install pyinstaller pywin32
 
 build_script:
   - cmd: C:\Python38-x64\Scripts\pyinstaller unsatisfactory.py --name unsatisfactory --clean --onefile
